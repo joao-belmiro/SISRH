@@ -5,6 +5,7 @@ mixins para reaproveitar código,vuex para gerênciar o estado da aplicação.
 ```
 <p>Dashboard do projeto</p>
 <img src="public/docs/dash.JPG" width="900" height="500">
+
 ## Project setup
 ```
 yarn install
