@@ -7,7 +7,7 @@
       </q-breadcrumbs>
       <q-btn
         flat
-        class="no-padding"
+        class="no-padding text-bold"
         color="grey-7"
         icon="add"
         label="Novo Colaborador"

@@ -72,7 +72,7 @@
             <q-toolbar class="q-px-none">
               <q-toolbar-title style="text-align:left;">Novos Colaboradores</q-toolbar-title>
               <div>
-                <q-btn flat dense round color="teal-4" icon="fa fa-plus" to="home/novo-colaborador">
+                <q-btn flat dense round color="teal-4" icon="fas fa-user-plus" to="home/novo-colaborador">
                   <q-tooltip content-style="font-size: 14px">Novo Colaborador</q-tooltip>
                 </q-btn>
               </div>
