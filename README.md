@@ -4,7 +4,7 @@ Este projeto tem como objetivo aplicar os principais conceitos de vuejs 2,será 
 mixins para reaproveitar código,vuex para gerênciar o estado da aplicação.
 ```
 * Dashboard do Projeto
-![alt](public/docs/dash.jpg)
+![alt](/public/docs/dash.jpg)
 
 ## Project setup
 ```
