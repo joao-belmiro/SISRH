@@ -32,7 +32,7 @@ export default {
     return {
       expand: true,
       title: 'Novo Cargo',
-      icon: 'add'
+      icon: 'fa fa-briefcase'
     }
   },
   watch: {
@@ -42,7 +42,7 @@ export default {
         this.icon = 'create'
       } else {
         this.title = 'Novo Cargo'
-        this.icon = 'add'
+        this.icon = 'fa fa-briefcase'
       }
     }
   },
@@ -67,7 +67,7 @@ export default {
       if (this.cargo.idCargo !== null) {
         console.log('foi')
         this.title = 'Novo Cargo'
-        this.icon = 'add'
+        this.icon = 'fa fa-briefcase'
       }
     }
   }

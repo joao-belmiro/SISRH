@@ -11,7 +11,7 @@
     <q-separator />
     <q-item  clickable v-ripple tag="a" to="/home/cargo" active-class="my-menu-link">
     <q-item-section avatar>
-        <q-icon name="fa fa-bomb" size="18px"/>
+        <q-icon name="fa fa-briefcase" size="18px"/>
       </q-item-section>
       <q-item-section>
         <q-item-label>Cargo</q-item-label>

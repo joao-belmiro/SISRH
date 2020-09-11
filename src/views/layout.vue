@@ -6,7 +6,7 @@
         <q-toolbar-title>
           <router-link class="float-left" to="/home" tag="div" style="cursor: pointer;"><div class="ellipsis">{{name}}</div></router-link>
         </q-toolbar-title>
-        <q-btn-dropdown  dense icon="fa fa-user" color="dark" size="10px">
+        <q-btn-dropdown flat dense icon="fa fa-user" color="white" size="10px">
           <user-menu/>
         </q-btn-dropdown>
       </q-toolbar>
