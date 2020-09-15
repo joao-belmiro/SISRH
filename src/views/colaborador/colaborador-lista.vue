@@ -176,18 +176,18 @@ export default {
       colab: null,
       columns: [
         {
-          name: (row) => row.cargo.nomeCargo,
+          name: 'nomeCargo',
           required: true,
           label: 'Cargo',
           align: 'left',
-          field: (row) => row.cargo.nomeCargo,
+          field: 'nomeCargo',
           sortable: true
         },
         {
-          name: (val) => val.departamento.nomeDepartamento,
+          name: 'nomeDepartamento',
           align: 'left',
           label: 'Departamento',
-          field: (val) => val.departamento.nomeDepartamento,
+          field: 'nomeDepartamento',
           sortable: true
         },
         {
@@ -229,18 +229,7 @@ export default {
       })
     },
     visualizar (colaborador) {
-      if (colaborador.endereco) {
-        this.$router.push({ path: `colaborador/${colaborador.idColaborador}/visualizar` })
-      } else {
-        this.$q.notify({
-          type: 'info',
-          position: 'top-right',
-          html: true,
-          textColor: 'white',
-          progress: true,
-          message: `<strong>Cadastre um Endereço para Poder Visualizar o Colaborador ${colaborador.nomeColaborador}<strong>`
-        })
-      }
+      this.$router.push({ path: `colaborador/${colaborador.idColaborador}/visualizar` })
     },
     resetar () {
       this.dialog = false
