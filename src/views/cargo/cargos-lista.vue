@@ -2,12 +2,12 @@
   <div>
     <div class="row items-center q-pa-md">
       <q-breadcrumbs active-color="teal">
-        <q-breadcrumbs-el icon="home" label="Home" to="/" />
+        <q-breadcrumbs-el icon="home" label="Home" to="/home" />
         <q-breadcrumbs-el label="Pesquisa" icon="search" to="/funcionario" />
       </q-breadcrumbs>
     </div>
     <q-form @submit="filtroCargo(tag)">
-      <div class="row items-start justify-center no-wraps q-px-md">
+      <div class="row items-start justify-center q-px-md">
         <div class="col-sm-6 col-md-6 col-xs-10">
           <q-input
             class="q-pb-none"

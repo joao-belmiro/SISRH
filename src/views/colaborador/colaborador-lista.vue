@@ -2,7 +2,7 @@
   <div>
     <div class="row items-start justify-between q-pa-md no-wrap">
       <q-breadcrumbs active-color="teal">
-        <q-breadcrumbs-el icon="home" label="Home" to="/" />
+        <q-breadcrumbs-el icon="home" label="Home" to="/home" />
         <q-breadcrumbs-el label="Pesquisa" icon="search" to="/colaborador" />
       </q-breadcrumbs>
       <q-btn

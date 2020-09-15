@@ -2,7 +2,7 @@
   <div>
     <div class="row items-center q-pa-md">
       <q-breadcrumbs active-color="teal">
-        <q-breadcrumbs-el icon="home" label="Home" to="/" />
+        <q-breadcrumbs-el icon="home" label="Home" to="/home" />
         <q-breadcrumbs-el label="Pesquisa" icon="search" to="/funcionario" />
       </q-breadcrumbs>
     </div>
@@ -21,7 +21,7 @@
           >
           </q-input>
         </div>
-          <q-btn class="border-buttom" size="17px" outline color="grey-5" type="submit" dense icon="search" />
+          <q-btn class="border-buttom" size="17.5px" outline color="grey-5" type="submit" dense icon="search" />
       </div>
     </q-form>
       <div class="q-px-md q-pt-md">
