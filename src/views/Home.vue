@@ -10,7 +10,7 @@
     </div>
     <div class="row items-center q-pb-md">
       <div v-if="load" class="col-sm-7 col-md-7 col-xs-12">
-        <bar-chart class="chart-container" :chartData="datacollection" />
+        <bar-chart class="chart-container" :chartData="datacollection" :bind="true"/>
       </div>
       <div class="column col-sm-5 col-md-5 col-xs-11">
         <div class="q-pb-sm">
@@ -182,7 +182,7 @@ export default {
       },
       pieData: {
         hoverBackgroundColor: '#f4f4f4',
-        hoverBorderWidth: 10,
+        hoverBorderWidth: 1,
         labels: [],
         datasets: [
           {
@@ -191,7 +191,7 @@ export default {
               '#42b983',
               '#cc0000',
               '#61dafb',
-              '#614092',
+              '#8257e6',
               '#1976d2',
               '#31ccec',
               '#026e00',
