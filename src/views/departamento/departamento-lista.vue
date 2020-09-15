@@ -121,7 +121,7 @@ export default {
         {
           name: 'descricao',
           align: 'left',
-          label: 'Descição',
+          label: 'Descrição',
           field: 'descricao',
           sortable: true
         },

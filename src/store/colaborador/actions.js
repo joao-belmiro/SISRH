@@ -43,7 +43,9 @@ export default {
     })
   },
   async salvarEndereco ({ commit }, ende) {
-    await endereco.salvar(ende)
+    await endereco.salvar(ende).then(response => {
+      commit('setEndercoColab', response.data)
+    })
   },
   async alterarEndereco ({ commit }, ende) {
     await endereco.alterar(ende).then(response => {

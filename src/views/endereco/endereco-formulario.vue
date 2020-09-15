@@ -138,7 +138,7 @@ export default {
       window.history.back()
     },
     submit () {
-      if (this.endereco.idEndereco === null) {
+      if (this.endereco.idEndereco === undefined) {
         this.salvarEndereco(this.endereco)
         window.history.back()
       } else {
@@ -148,7 +148,15 @@ export default {
     },
     buscarEndereco (cep) {
       viaCep.get(`${cep}/json`).then(response => {
-        if (response.data.erro) this.$q.notify({ type: 'warning', position: 'top-right', message: `Endereço Não Encontrado para o Cep: ${this.formatCep(this.endereco.cep)}` })
+        if (response.data.erro) {
+          this.$q.notify({
+            type: 'warning',
+            position: 'top-right',
+            html: true,
+            textColor: 'grey-2',
+            message: `<strong>Endereço Não Encontrado para o Cep: ${this.formatCep(this.endereco.cep)}<strong>`
+          })
+        }
         this.consulta = response.data
       })
     }

@@ -229,10 +229,18 @@ export default {
       })
     },
     visualizar (colaborador) {
-      this.setColaboradorVizualizar(colaborador)
-      this.$router.push({
-        path: `colaborador/${colaborador.idColaborador}/visualizar`
-      })
+      if (colaborador.endereco) {
+        this.$router.push({ path: `colaborador/${colaborador.idColaborador}/visualizar` })
+      } else {
+        this.$q.notify({
+          type: 'info',
+          position: 'top-right',
+          html: true,
+          textColor: 'white',
+          progress: true,
+          message: `<strong>Cadastre um Endereço para Poder Visualizar o Colaborador ${colaborador.nomeColaborador}<strong>`
+        })
+      }
     },
     resetar () {
       this.dialog = false

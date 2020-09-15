@@ -1,6 +1,5 @@
 export default {
   endereco: {
-    idEndereco: null,
     cep: '',
     numero: '',
     complemento: '',
@@ -25,7 +24,7 @@ export default {
       idCargo: null
     }
   },
-  colaboradorVizualizar: {
+  colaboradorVisualizar: {
     idColaborador: null,
     nomeColaborador: '',
     cpfCnpj: '',
@@ -39,7 +38,11 @@ export default {
     cargo: {
       idCargo: null
     },
-    enderecos: []
+    endereco: {
+      cep: '',
+      numero: '',
+      complemento: ''
+    }
   },
   colaboradoresCargo: [],
   colaboradoresDept: []

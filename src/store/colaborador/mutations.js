@@ -34,7 +34,7 @@ export default {
     state.colaborador.cargo.idCargo = payload.cargo.idCargo
   },
   setColaboradorVizualizar (state, colab) {
-    state.colaboradorVizualizar = colab
+    state.colaboradorVisualizar = colab
   },
   removerColaborador (state, idColab) {
     state.filtroColaboradores = state.filtroColaboradores.filter(colab => colab.idColaborador !== idColab)
@@ -44,5 +44,8 @@ export default {
   },
   removerColaboradorDept (state, idColab) {
     state.colaboradoresDept = state.colaboradoresDept.filter(colab => colab.idColaborador !== idColab)
+  },
+  setEndercoColab (state, endereco) {
+
   }
 }

@@ -28,14 +28,14 @@
           transition-next="jump-right"
         >
           <q-tab-panel name="dados">
-            <div class="text-h6 q-mb-md">{{colaboradorVizualizar.nomeColaborador}}</div>
+            <div class="text-h6 q-mb-md">{{colaboradorVisualizar.nomeColaborador}}</div>
             <q-list dense>
                <q-item class="q-pl-none">
         <q-item-section>
           <q-item-label class="text-subtitle text-bold">Departamento</q-item-label>
           </q-item-section>
            <q-item-section side>
-          <q-item-label class="text-subtitle2">{{colaboradorVizualizar.departamento.nomeDepartamento}}</q-item-label>
+          <q-item-label class="text-subtitle2">{{colaboradorVisualizar.departamento.nomeDepartamento}}</q-item-label>
           </q-item-section>
         </q-item>
          <q-item>
@@ -43,7 +43,7 @@
           <q-item-label class="text-subtitle text-bold">Cargo</q-item-label>
           </q-item-section>
            <q-item-section side>
-          <q-item-label class="text-subtitle2">{{colaboradorVizualizar.cargo.nomeCargo}}</q-item-label>
+          <q-item-label class="text-subtitle2">{{colaboradorVisualizar.cargo.nomeCargo}}</q-item-label>
           </q-item-section>
         </q-item>
           <q-item>
@@ -51,7 +51,7 @@
           <q-item-label class="text-subtitle text-bold">Contratação</q-item-label>
           </q-item-section>
            <q-item-section side>
-          <q-item-label class="text-subtitle2">{{colaboradorVizualizar.dataContratacao}}</q-item-label>
+          <q-item-label class="text-subtitle2">{{colaboradorVisualizar.dataContratacao}}</q-item-label>
           </q-item-section>
         </q-item>
          <q-item>
@@ -59,7 +59,7 @@
           <q-item-label class="text-subtitle text-bold">Nº Documento</q-item-label>
           </q-item-section>
            <q-item-section side>
-          <q-item-label class="text-subtitle2">{{formatCpf(colaboradorVizualizar.cpfCnpj)}}</q-item-label>
+          <q-item-label class="text-subtitle2">{{formatCpf(colaboradorVisualizar.cpfCnpj)}}</q-item-label>
           </q-item-section>
         </q-item>
          <q-item>
@@ -67,7 +67,7 @@
           <q-item-label class="text-subtitle text-bold">Salário</q-item-label>
           </q-item-section>
            <q-item-section side>
-          <q-item-label class="text-subtitle2">{{formatCurrency(colaboradorVizualizar.salario)}}</q-item-label>
+          <q-item-label class="text-subtitle2">{{formatCurrency(colaboradorVisualizar.salario)}}</q-item-label>
           </q-item-section>
         </q-item>
          <q-item>
@@ -75,7 +75,7 @@
           <q-item-label class="text-subtitle text-bold">E-mail</q-item-label>
           </q-item-section>
            <q-item-section side>
-          <q-item-label class="text-subtitle2">{{colaboradorVizualizar.email}}</q-item-label>
+          <q-item-label class="text-subtitle2">{{colaboradorVisualizar.email}}</q-item-label>
           </q-item-section>
         </q-item>
          <q-item>
@@ -83,7 +83,7 @@
           <q-item-label class="text-subtitle text-bold">Telefone</q-item-label>
           </q-item-section>
            <q-item-section side>
-          <q-item-label class="text-subtitle2">{{formatPhone(colaboradorVizualizar.telefone)}}</q-item-label>
+          <q-item-label class="text-subtitle2">{{formatPhone(colaboradorVisualizar.telefone)}}</q-item-label>
           </q-item-section>
         </q-item>
             </q-list>
@@ -96,7 +96,7 @@
           <q-item-label class="text-subtitle text-bold">Endereço</q-item-label>
           </q-item-section>
            <q-item-section side>
-          <q-item-label class="text-subtitle2">{{`${consulta.logradouro}, Nº${colaboradorVizualizar.endereco.numero}`}}</q-item-label>
+          <q-item-label class="text-subtitle2">{{`${consulta.logradouro}, Nº${colaboradorVisualizar.endereco.numero}`}}</q-item-label>
           </q-item-section>
         </q-item>
          <q-item>
@@ -104,7 +104,7 @@
           <q-item-label class="text-subtitle text-bold">Complemento</q-item-label>
           </q-item-section>
            <q-item-section side>
-          <q-item-label class="text-subtitle2">{{`${colaboradorVizualizar.endereco.complemento.toLowerCase()}`}}</q-item-label>
+          <q-item-label class="text-subtitle2">{{`${colaboradorVisualizar.endereco.complemento.toLowerCase()}`}}</q-item-label>
           </q-item-section>
         </q-item>
         <q-item>
@@ -112,7 +112,7 @@
           <q-item-label class="text-subtitle text-bold">Cep</q-item-label>
           </q-item-section>
            <q-item-section side>
-          <q-item-label class="text-subtitle2">{{formatCep(colaboradorVizualizar.endereco.cep)}}</q-item-label>
+          <q-item-label class="text-subtitle2">{{formatCep(colaboradorVisualizar.endereco.cep)}}</q-item-label>
           </q-item-section>
         </q-item>
         <q-item>
@@ -171,7 +171,7 @@ export default {
     }
   },
   computed: {
-    ...mapState('colaborador', ['colaboradorVizualizar'])
+    ...mapState('colaborador', ['colaboradorVisualizar'])
   },
   methods: {
     ...mapActions('colaborador', ['buscarPorId']),
@@ -179,10 +179,9 @@ export default {
       window.history.back()
     }
   },
-  created () {
-    viaCep.get(`${this.colaboradorVizualizar.endereco.cep}/json`).then(response => {
-      this.consulta = response.data
-    })
+  async created () {
+    await this.buscarPorId(this.$route.params.idColaborador)
+    await viaCep.get(`/${this.colaboradorVisualizar.endereco.cep}/json`).then(response => { this.consulta = response.data })
   }
 }
 </script>
