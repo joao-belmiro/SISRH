@@ -201,7 +201,7 @@ export default {
           name: 'dataContratacao',
           align: 'left',
           label: 'Data',
-          field: 'dataContratacao'
+          field: val => this.formatDataExtenso(new Date(val.dataContratacao))
         },
         {
           name: 'telefone',

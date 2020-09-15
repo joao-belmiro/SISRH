@@ -10,6 +10,9 @@ export default {
       cpf = cpf.replace(/(\d{3})(\d{1,2})$/, '$1-$2')
       return cpf
     },
+    formatDataExtenso (data) {
+      return new Intl.DateTimeFormat('pt-BR', { year: 'numeric', month: 'long', day: 'numeric' }).format(data)
+    },
     formatData (data) {
       return new Intl.DateTimeFormat('pt-BR').format(data)
     },
