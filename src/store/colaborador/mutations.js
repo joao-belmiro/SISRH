@@ -30,8 +30,8 @@ export default {
     state.colaborador.dataContratacao = payload.dataContratacao
     state.colaborador.telefone = payload.telefone
     state.colaborador.email = payload.email
-    state.colaborador.departamento.idDepartamento = payload.departamento.idDepartamento
-    state.colaborador.cargo.idCargo = payload.cargo.idCargo
+    state.colaborador.departamento.idDepartamento = payload.idDepartamento
+    state.colaborador.cargo.idCargo = payload.idCargo
   },
   setColaboradorVizualizar (state, colab) {
     state.colaboradorVisualizar = colab
