@@ -70,9 +70,6 @@ export default {
           }
         })
     }
-  },
-  created () {
-    console.table(this.$route)
   }
 }
 </script>

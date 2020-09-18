@@ -9,6 +9,6 @@ export const notify = function (mensagem, cor, icone) {
     progress: true,
     timeout: 4000,
     textColor: 'grey-1',
-    actions: [{ color: 'white', icon: 'close' }]
+    actions: [{ color: 'white', icon: 'close', size: 'sm', round: true }]
   })
 }
