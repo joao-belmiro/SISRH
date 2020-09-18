@@ -6,7 +6,10 @@ export const http = axios.create({
 export const viaCep = axios.create({
   baseURL: 'https://viacep.com.br/ws/'
 })
-
+http.interceptors.request.use(request => {
+  request.headers.Authorization = `Bearer ${localStorage.getItem('token')}`
+  return request
+})
 http.interceptors.response.use((response) => {
   if (response.status === 201 || response.status === 204) {
     notify('Operação Realizada com sucesso', 'positive', 'check')
