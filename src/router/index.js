@@ -1,7 +1,14 @@
+
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import layout from '../views/layout.vue'
 Vue.use(VueRouter)
+const auth = (to, from, next) => {
+  if (localStorage.getItem('token')) {
+    next()
+  }
+}
+
 const routes = [
   {
     path: '',
@@ -68,7 +75,8 @@ const routes = [
         name: 'departamento',
         component: () => import('../views/departamento/departamento-lista.vue')
       }
-    ]
+    ],
+    beforeEnter: auth
   }
 ]
 const router = new VueRouter({
@@ -76,5 +84,13 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
-
+router.beforeEach((to, anterior, next) => {
+  if (to.name === 'login') {
+    next()
+  }
+  if (to.name === 'home' && localStorage.getItem('token') !== undefined) next()
+  if (to.name !== 'home' && to.name !== 'login') {
+    next()
+  }
+})
 export default router
