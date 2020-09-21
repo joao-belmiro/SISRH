@@ -27,6 +27,15 @@
       </q-item-section>
     </q-item>
     <q-separator />
+    <q-item clickable v-ripple tag="a" to="/home/usuarios" active-class="my-menu-link">
+    <q-item-section avatar>
+        <q-icon name="fas fa-user-plus" size="18px"/>
+      </q-item-section>
+      <q-item-section>
+        <q-item-label>Usuários</q-item-label>
+      </q-item-section>
+    </q-item>
+  <q-separator/>
   </q-list>
 </template>
 <script>

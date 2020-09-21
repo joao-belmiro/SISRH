@@ -74,6 +74,11 @@ const routes = [
         path: 'departamento',
         name: 'departamento',
         component: () => import('../views/departamento/departamento-lista.vue')
+      },
+      {
+        path: 'usuarios',
+        name: 'usuarios',
+        component: () => import('../views/usuarios/usuario-lista.vue')
       }
     ],
     beforeEnter: auth
