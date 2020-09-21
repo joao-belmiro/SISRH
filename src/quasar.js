@@ -64,7 +64,8 @@ import {
   QSpinnerPie,
   QSpinnerAudio,
   QSpinner,
-  QImg
+  QImg,
+  QCheckbox
 } from 'quasar'
 
 Vue.use(Quasar, {
@@ -124,7 +125,8 @@ Vue.use(Quasar, {
     QSpinnerPie,
     QSpinnerAudio,
     QSpinner,
-    QImg
+    QImg,
+    QCheckbox
   },
   directives: {
     Ripple,
