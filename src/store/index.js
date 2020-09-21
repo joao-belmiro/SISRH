@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import colaborador from './colaborador'
 import cargo from './cargo'
 import depart from './departamento'
+import usuario from './usuario'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -15,6 +16,7 @@ export default new Vuex.Store({
   modules: {
     colaborador,
     cargo,
-    depart
+    depart,
+    usuario
   }
 })
