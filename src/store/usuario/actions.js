@@ -15,10 +15,10 @@ export default {
       }
     })
   },
-  deletar ({ commit }, user) {
-    user.deletar(user.id).then(response => {
+  deletar ({ commit }, usuario) {
+    user.deletarUser(usuario.id).then(response => {
       if (response.status === 204) {
-        commit('removerItem', user)
+        commit('removerItem', usuario)
       }
     })
   },

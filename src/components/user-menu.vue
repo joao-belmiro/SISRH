@@ -10,7 +10,7 @@
             icon="fas fa-sign-out-alt"
             color="positive"
             label="Sair"
-            size="sm"
+            size="md"
             v-close-popup
             @click="sair"
           />
@@ -35,10 +35,8 @@ export default {
     }
   },
   created () {
-    console.log(localStorage.getItem('adm'))
     this.perfil = localStorage.getItem('adm')
     this.usuario = localStorage.getItem('userName')
-    console.log(this.perfil)
   }
 }
 </script>

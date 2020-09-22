@@ -3,7 +3,7 @@ const user = {
   salvar: (usuario) => http.post('/usuario/criar', usuario),
   filtro: (tag) => http.get('/usuario/tag', { params: { tag: tag } }),
   alterar: (usuario) => http.post('/usuario/alterar', usuario),
-  deletar: (id) => http.delete(`/usuario/deletar/${id}`),
+  deletarUser: (id) => http.delete(`/usuario/deletar/${id}`),
   buscarPorId: (id) => http.get(`/usuario/buscar/${id}`)
 }
 export default user
