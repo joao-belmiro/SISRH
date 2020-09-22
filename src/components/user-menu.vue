@@ -5,7 +5,7 @@
             <q-icon name="fas fa-user-alt"/>
           </q-avatar>
           <div class="text-subtitle1 q-mt-md q-mb-xs">{{usuario}}</div>
-          <div class="text-subtitle1 q-mb-xs">Administrador</div>
+          <div class="text-subtitle1 q-mb-xs">{{perfil}}</div>
           <q-btn
             icon="fas fa-sign-out-alt"
             color="positive"
@@ -22,18 +22,23 @@
 export default {
   data () {
     return {
-      usuario: ''
+      usuario: '',
+      perfil: ''
     }
   },
   methods: {
     sair () {
       localStorage.removeItem('userName')
       localStorage.removeItem('token')
+      localStorage.removeItem('adm')
       this.$router.push({ name: 'login' })
     }
   },
   created () {
+    console.log(localStorage.getItem('adm'))
+    this.perfil = localStorage.getItem('adm')
     this.usuario = localStorage.getItem('userName')
+    console.log(this.perfil)
   }
 }
 </script>

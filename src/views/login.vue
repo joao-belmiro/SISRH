@@ -10,6 +10,7 @@
           class="q-pb-sm"
           dense
           outlined
+          color="secondary"
           v-model="user"
           label="Usuário"
           :rules="[ val => val && val.length > 0 || 'Campo Obrigatório']">
@@ -20,6 +21,7 @@
           <q-input
             class="q-pb-sm"
             v-model="password"
+            color="secondary"
             label="Senha"
             dense
             outlined
@@ -66,6 +68,7 @@ export default {
           if (response.status === 200) {
             localStorage.setItem('token', response.data.token)
             localStorage.setItem('userName', response.data.login)
+            response.data.adm ? localStorage.setItem('adm', 'Administrador') : localStorage.setItem('adm', 'Usuário')
             this.$router.push({ path: '/home' })
           }
         })
