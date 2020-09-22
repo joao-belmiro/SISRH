@@ -4,6 +4,8 @@ export default {
   },
   getUsuario (state) {
     return state.usuario
+  },
+  getIdUsuario (state) {
+    return state.usuario.id
   }
-
 }

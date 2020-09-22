@@ -4,7 +4,9 @@ export default {
     user.salvar(usuario)
   },
   alterar ({ commit }, usuario) {
-    user.alterar(usuario)
+    user.alterar(usuario).then(response => {
+      if (response.status === 204) commit('limparUser')
+    })
   },
   buscarPorId ({ commit }, id) {
     user.buscarPorId(id).then(response => {
