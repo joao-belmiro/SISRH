@@ -8,7 +8,7 @@ export const notify = function (mensagem, cor, icone) {
     position: 'top-right',
     progress: true,
     timeout: 4000,
-    textColor: 'grey-1',
+    textColor: 'white',
     actions: [{ color: 'white', icon: 'close', size: 'sm', round: true }]
   })
 }
