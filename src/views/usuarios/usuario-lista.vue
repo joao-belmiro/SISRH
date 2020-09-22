@@ -74,7 +74,7 @@
               round
               class
               flat
-              @click="buscarPorId(props.row.id)"
+              @click="setUsuario(props.row)"
             >
               <q-tooltip content-style="font-size: 14px">Alterar</q-tooltip>
             </q-btn>
@@ -107,7 +107,7 @@
 </template>
 <script>
 import usuarioForm from './usuario-formulario.vue'
-import { mapActions, mapGetters } from 'vuex'
+import { mapActions, mapGetters, mapMutations } from 'vuex'
 export default {
   components: { usuarioForm },
   data () {
@@ -135,7 +135,7 @@ export default {
           name: 'admin',
           align: 'left',
           label: 'Administrador',
-          field: 'admin',
+          field: val => val.admin ? 'SIM' : 'NÂO',
           sortable: true
         },
         { name: 'opcoes', label: 'Opções', align: 'center' }
@@ -146,7 +146,8 @@ export default {
     ...mapGetters('usuario', ['getFiltroUsuarios'])
   },
   methods: {
-    ...mapActions('usuario', ['filtroUser', 'buscarPorId', 'deletar'])
+    ...mapActions('usuario', ['filtroUser', 'buscarPorId', 'deletar']),
+    ...mapMutations('usuario', ['setUsuario'])
   }
 }
 </script>
