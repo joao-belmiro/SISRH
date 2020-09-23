@@ -31,6 +31,98 @@ export default {
       localStorage.removeItem('userName')
       localStorage.removeItem('token')
       localStorage.removeItem('adm')
+      this.$store.replaceState({
+        cargo: {
+          cargo: {
+            idCargo: null,
+            nomeCargo: '',
+            descricaoCargo: ''
+          },
+          filtroCargos: [],
+          todosCargos: [],
+          cargoLabels: [],
+          cargoData: [],
+          loadCargo: false
+        },
+        colaborador: {
+          endereco: {
+            cep: '',
+            numero: '',
+            complemento: '',
+            colaborador: {
+              idColaborador: null
+            }
+          },
+          dashColaboradores: [],
+          filtroColaboradores: [],
+          colaborador: {
+            idColaborador: null,
+            nomeColaborador: '',
+            cpfCnpj: '',
+            salario: null,
+            dataContratacao: '',
+            telefone: '',
+            email: '',
+            departamento: {
+              idDepartamento: null
+            },
+            cargo: {
+              idCargo: null
+            }
+          },
+          colaboradorVisualizar: {
+            idColaborador: null,
+            nomeColaborador: '',
+            cpfCnpj: '',
+            salario: 0,
+            dataContratacao: '',
+            telefone: '',
+            email: '',
+            departamento: {
+              idDepartamento: null
+            },
+            cargo: {
+              idCargo: null
+            },
+            endereco: {
+              cep: '',
+              numero: '',
+              complemento: ''
+            }
+          },
+          colaboradoresCargo: [],
+          colaboradoresDept: []
+        },
+        depart: {
+          departamento: {
+            idDepartamento: null,
+            nomeDepartamento: '',
+            descricao: ''
+          },
+          filtroDepartamentos: [],
+          todosDepartamentos: [],
+          graficoDepartamentos: [],
+          dashDepartamentos: [],
+          departamentoVisualizar: {
+            idDepartamento: null,
+            nomeDepartamento: '',
+            descricao: ''
+          },
+          data: [],
+          labels: [],
+          load: false
+        },
+        usuario: {
+          usuario: {
+            id: null,
+            login: '',
+            senha: '',
+            admin: false
+          },
+          filtroUsuarios: []
+        }
+      })
+      console.log(this.$store)
       this.$router.push({ name: 'login' })
     }
   },

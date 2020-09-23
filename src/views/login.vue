@@ -82,6 +82,6 @@ export default {
   width: 100%;
   max-width: 400px !important;
   height: 100%;
-  max-height: 300px;
+  max-height: 500px;
 }
 </style>
