@@ -1,6 +1,24 @@
 import colaborador from '../../services/colaborador.js'
 import endereco from '../../services/endereco.js'
 import router from '../../router'
+
+const converter = (colabs) => {
+  return colabs.map(c => {
+    return {
+      idColaborador: c.idColaborador,
+      nomeColaborador: c.nomeColaborador,
+      salario: c.salario,
+      dataContratacao: c.dataContratacao,
+      telefone: c.telefone,
+      cpfCnpj: c.cpfCnpj,
+      email: c.email,
+      idCargo: c.cargo.idCargo,
+      nomeCargo: c.cargo.nomeCargo,
+      idDepartamento: c.departamento.idDepartamento,
+      nomeDepartamento: c.departamento.nomeDepartamento
+    }
+  })
+}
 export default {
   async salvarColab ({ state, commit }, colab) {
     await colaborador.salvar(colab).then(response => {
@@ -20,7 +38,8 @@ export default {
   },
   async colabsDepartameto ({ commit }, idDepartamento) {
     await colaborador.buscarPorDepartamento(idDepartamento).then(response => {
-      commit('setColaboradorDept', response.data)
+      const colabs = converter(response.data)
+      commit('setColaboradorDept', colabs)
     })
   },
   async buscarPorId ({ commit }, idColaborador) {
@@ -30,7 +49,8 @@ export default {
   },
   async novosColabs ({ commit }) {
     await colaborador.novosColabs().then(response => {
-      commit('setDashColaboradores', response.data)
+      const colabs = converter(response.data)
+      commit('setDashColaboradores', colabs)
     })
   },
   async deletarColaborador ({ commit }, colab) {

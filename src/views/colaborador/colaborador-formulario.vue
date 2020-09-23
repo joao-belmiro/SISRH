@@ -164,7 +164,7 @@
           </div>
           <q-card-actions align="right" class="bg-white q-pt-md" style="padding-right: 0px;">
             <q-btn type="submit" label="Salvar" color="teal" icon="save" no-caps />
-            <q-btn label="Cancelar" @click="cancel" color="red-10" icon="close" no-caps />
+            <q-btn  outline label="Cancelar" @click="cancel" color="red-10" icon="close" no-caps />
           </q-card-actions>
         </q-form>
       </q-card-section>

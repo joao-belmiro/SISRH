@@ -88,11 +88,11 @@
                       <q-item-label>Nome</q-item-label>
                       <q-item-label caption>{{colaborador.nomeColaborador}}</q-item-label>
                       <q-item-label>Lotação</q-item-label>
-                      <q-item-label caption>{{colaborador.departamento.nomeDepartamento}}</q-item-label>
+                      <q-item-label caption>{{colaborador.nomeDepartamento}}</q-item-label>
                     </q-item-section>
                     <q-item-section>
                       <q-item-label>Cargo</q-item-label>
-                      <q-item-label caption>{{colaborador.cargo.nomeCargo}}</q-item-label>
+                      <q-item-label caption>{{colaborador.nomeCargo}}</q-item-label>
                       <q-item-label>Telefone</q-item-label>
                       <q-item-label caption>{{formatPhone(colaborador.telefone)}}</q-item-label>
                     </q-item-section>

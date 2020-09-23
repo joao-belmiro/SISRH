@@ -122,7 +122,6 @@ export default {
           filtroUsuarios: []
         }
       })
-      console.log(this.$store)
       this.$router.push({ name: 'login' })
     }
   },
