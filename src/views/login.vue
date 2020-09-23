@@ -1,4 +1,5 @@
 <template>
+<div>
   <q-card flat bordered class="absolute-center card-container">
     <q-card-section>
       <div class="text-h6">Insira suas Credenciais</div>
@@ -49,6 +50,18 @@
       </q-form>
     </q-card-section>
   </q-card>
+  <div class="absolute-bottom-right q-pa-md">
+      <a href="https://github.com/joao-belmiro" target="#">
+          <q-icon color="black" name="fab fa-github" size="1.8em">
+            <q-tooltip>
+              <div class="text-body2">
+              Repositório do Autor
+              </div>
+            </q-tooltip>
+          </q-icon>
+          </a>
+  </div>
+</div>
 </template>
 <script>
 import { http } from '../services/config.js'
