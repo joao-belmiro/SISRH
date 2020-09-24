@@ -37,7 +37,7 @@
                   mask="###.###.###-##"
                   label="Cpf"
                   unmasked-value
-                  :rules="[ val => val && val.length > 0 || 'Campo Obrigatório']"
+                  :rules="[ val => val && val.length > 0 || 'Campo Obrigatório', val => validarCpf(val) || 'Cpf inválido']"
                   clearable
                 />
               </div>
@@ -104,6 +104,7 @@
                   :options="arrayCargos"
                   map-options
                   emit-value
+                  :options-dense="true"
                 >
                   <template v-slot:no-option>
                     <q-item>
@@ -127,6 +128,7 @@
                   :options="arrayDepartamentos"
                   map-options
                   emit-value
+                  :options-dense="true"
                 >
                   <template v-slot:no-option>
                     <q-item>
@@ -173,9 +175,10 @@
 </template>
 <script>
 import filter from '../../mixins/filter.js'
+import validation from '../../mixins/validation.js'
 import { mapActions, mapState, mapMutations } from 'vuex'
 export default {
-  mixins: [filter],
+  mixins: [filter, validation],
   data () {
     return {
       medium: true,
