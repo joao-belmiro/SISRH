@@ -50,7 +50,7 @@
       </q-form>
     </q-card-section>
   </q-card>
-  <div class="absolute-bottom-right q-pa-md">
+  <div class="absolute-bottom-right q-pa-lg">
       <a href="https://github.com/joao-belmiro" target="#">
           <q-icon color="black" name="fab fa-github" size="1.8em">
             <q-tooltip>

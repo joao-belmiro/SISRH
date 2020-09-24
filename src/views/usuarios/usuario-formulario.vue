@@ -95,7 +95,7 @@ export default {
       senha: '',
       repet: '',
       isPwd: true,
-      pwd: false,
+      pwd: true,
       value: false,
       senhaAntiga: '',
       labelSenha: 'Senha',
