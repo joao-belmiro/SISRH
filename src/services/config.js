@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { notify } from '../mixins/quasar-plugins.js'
+const formataErros = (data) => data.map(d => `<li>${d.defaultMessage}</li>`).join('')
 export const http = axios.create({
   baseURL: 'http://localhost:8082'
 })
@@ -17,6 +18,7 @@ http.interceptors.response.use((response) => {
   if (response.config.method === 'get' && response.data.length === 0) notify('Não Foram Encontrados Registros para os Dados de Entrada', 'warning', 'priority_high')
   return response
 }, (erro) => {
+  if (erro.response.status === 400) notify(formataErros(erro.response.data.errors), 'negative', 'warning')
   if (erro.response.status === 500) notify(erro.response.data.message, 'negative', 'warning')
   if (erro.response.status === 401) notify(erro.response.data.message, 'negative', 'warning')
   if (erro.response.status === 403) notify(erro.response.data.message, 'negative', 'warning')
