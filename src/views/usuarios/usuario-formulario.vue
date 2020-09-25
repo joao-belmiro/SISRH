@@ -90,7 +90,7 @@ export default {
   components: { expandForm },
   data () {
     return {
-      title: 'Novo usuário',
+      title: 'Novo Usuário',
       icon: 'fas fa-user-plus',
       senha: '',
       repet: '',

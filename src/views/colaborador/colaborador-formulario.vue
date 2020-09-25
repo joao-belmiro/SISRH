@@ -1,10 +1,10 @@
 <template>
   <q-dialog v-model="medium" position="top" persistent transition-hide="scale">
-    <q-card class="my-card bg-white text" style="width: 100%; max-width: 750px;">
-      <q-card-section class="row text-white bg-teal-5  no-wrap">
+    <q-card class="my-card bg-white text" style="width: 100%; max-width: 750px">
+      <q-card-section class="row text-white bg-teal-5 no-wrap">
         <div class="row items-center">
           <q-icon class="q-pr-sm" size="24px" :name="icon" />
-          <div class="text-h6">{{title}}</div>
+          <div class="text-h6">{{ title }}</div>
         </div>
         <q-space />
         <q-btn @click="cancel" round dense flat icon="close">
@@ -23,7 +23,9 @@
                   outlined
                   v-model="colaborador.nomeColaborador"
                   label="Nome Completo"
-                  :rules="[ val => val && val.length > 0 || 'Campo Obrigatório']"
+                  :rules="[
+                    (val) => (val && val.length > 0) || 'Campo Obrigatório',
+                  ]"
                   clearable
                 />
               </div>
@@ -37,7 +39,10 @@
                   mask="###.###.###-##"
                   label="Cpf"
                   unmasked-value
-                  :rules="[ val => val && val.length > 0 || 'Campo Obrigatório', val => validarCpf(val) || 'Cpf inválido']"
+                  :rules="[
+                    (val) => (val && val.length > 0) || 'Campo Obrigatório',
+                    (val) => validarCpf(val) || 'Cpf inválido',
+                  ]"
                   clearable
                 />
               </div>
@@ -45,15 +50,17 @@
             <div class="row items-start q-col-gutter-md">
               <div class="col-sm-6 col-md-6 col-xs-12">
                 <q-input
-                  style="padding-bottom:0px;"
+                  style="padding-bottom: 0px"
                   outlined
                   color="teal"
                   dense
                   class="q-pb-none"
                   v-model="colaborador.dataContratacao"
                   label="Data da Contratação"
-                  mask= "##/##/####"
-                  :rules="[ val => val && val.length > 0 || 'Campo Obrigatório']"
+                  mask="##/##/####"
+                  :rules="[
+                    (val) => (val && val.length > 0) || 'Campo Obrigatório',
+                  ]"
                 >
                   <template v-slot:append>
                     <q-icon name="event" class="cursor-pointer">
@@ -74,18 +81,15 @@
                 </q-input>
               </div>
               <div class="col-sm-6 col-md-6 col-xs-12">
-                <q-input
-                  outlined
-                  color="teal"
-                  prefix="R$"
-                  type="number"
-                  reverse-fill-mask
-                  dense
-                  class="q-pb-none"
-                  v-model="colaborador.salario"
-                  label="Salário"
-                  :rules="[ val => val && val.length > 0 || 'Campo Obrigatório']"
-                />
+                <q-field dense outlined label="Salário" color="secondary">
+                  <template v-slot:control>
+                    <money
+                    class="q-field__input text-right"
+                      v-model="colaborador.salario"
+                      v-bind="money"
+                    ></money>
+                  </template>
+                </q-field>
               </div>
             </div>
             <div class="row items-start q-col-gutter-md">
@@ -108,7 +112,9 @@
                 >
                   <template v-slot:no-option>
                     <q-item>
-                      <q-item-section class="text-teal">No results</q-item-section>
+                      <q-item-section class="text-teal"
+                        >No results</q-item-section
+                      >
                     </q-item>
                   </template>
                 </q-select>
@@ -132,7 +138,9 @@
                 >
                   <template v-slot:no-option>
                     <q-item>
-                      <q-item-section class="text-teal">No results</q-item-section>
+                      <q-item-section class="text-teal"
+                        >No results</q-item-section
+                      >
                     </q-item>
                   </template>
                 </q-select>
@@ -146,7 +154,9 @@
                   dense
                   class="q-pb-none"
                   v-model="colaborador.email"
-                  :rules="[ val => val && val.length > 0 || 'Campo Obrigatório']"
+                  :rules="[
+                    (val) => (val && val.length > 0) || 'Campo Obrigatório',
+                  ]"
                   label="Email"
                 />
               </div>
@@ -160,13 +170,30 @@
                   label="Telefone"
                   mask="(##) #####-####"
                   unmasked-value
-                />
+                  :rules="[(val) => (val && val.length > 0) || 'Campo Obrigatório']"/>
               </div>
             </div>
           </div>
-          <q-card-actions align="right" class="bg-white q-pt-md" style="padding-right: 0px;">
-            <q-btn type="submit" label="Salvar" color="teal" icon="save" no-caps />
-            <q-btn  outline label="Cancelar" @click="cancel" color="red-10" icon="close" no-caps />
+          <q-card-actions
+            align="right"
+            class="bg-white q-pt-md"
+            style="padding-right: 0px"
+          >
+            <q-btn
+              type="submit"
+              label="Salvar"
+              color="teal"
+              icon="save"
+              no-caps
+            />
+            <q-btn
+              outline
+              label="Cancelar"
+              @click="cancel"
+              color="red-10"
+              icon="close"
+              no-caps
+            />
           </q-card-actions>
         </q-form>
       </q-card-section>
@@ -177,14 +204,23 @@
 import filter from '../../mixins/filter.js'
 import validation from '../../mixins/validation.js'
 import { mapActions, mapState, mapMutations } from 'vuex'
+import { Money } from 'v-money'
 export default {
+  components: { Money },
   mixins: [filter, validation],
   data () {
     return {
       medium: true,
       step: 1,
       title: 'Novo Colaborador',
-      icon: 'add'
+      icon: 'add',
+      money: {
+        decimal: '.',
+        thousands: ',',
+        prefix: 'R$ ',
+        precision: 2,
+        masked: false /* doesn't work with directive */
+      }
     }
   },
   computed: {
@@ -200,7 +236,9 @@ export default {
       this.limparColaborador(true)
     },
     salvar () {
-      this.$route.params.idColaborador ? this.alterarColab(this.colaborador) : this.salvarColab(this.colaborador)
+      this.$route.params.idColaborador
+        ? this.alterarColab(this.colaborador)
+        : this.salvarColab(this.colaborador)
       window.history.back()
     },
     preparaAlterar () {
