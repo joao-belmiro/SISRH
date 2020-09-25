@@ -17,14 +17,12 @@ export default {
       if (resto !== parseInt(cpf.substring(9, 10))) return false
       soma = 0
       for (let index = 1; index <= 10; index++) {
-        soma = soma + parseInt(cpf.substring(index - 1, index)) * (11 - index)
+        soma = soma + parseInt(cpf.substring(index - 1, index)) * (12 - index)
       }
+      resto = (soma * 10) % 11
       if (resto === 10 || resto === 11) resto = 0
-      if (resto !== parseInt(cpf.substring(10, 11))) {
-        return false
-      } else {
-        return true
-      }
+      if (resto !== parseInt(cpf.substring(10, 11))) return false
+      return true
     }
   }
 }
