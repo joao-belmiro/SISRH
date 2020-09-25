@@ -1,8 +1,7 @@
 <script>
-import { Bar } from 'vue-chartjs'
+import { HorizontalBar } from 'vue-chartjs'
 export default {
-  extends: Bar,
-  name: 'barChart',
+  extends: HorizontalBar,
   props: ['chartData'],
   data () {
     return {
@@ -14,25 +13,25 @@ export default {
           mode: 'single',
           callbacks: {
             label: function (tooltipItems, data) {
-              return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(tooltipItems.yLabel)
+              return tooltipItems.xLabel + ' Colaboradores'
             }
           }
         },
         scales: {
           yAxes: [{
             ticks: {
-              beginAtZero: true
+              callback: function (value) {
+                return value.substring(0, 8).concat('...')
+              },
+              beginAtZero: false
             },
             gridLines: {
-              display: true
+              display: false
             }
           }],
           xAxes: [{
             ticks: {
-              callback: function (value) {
-                return value.substring(0, 8).concat('..')
-              },
-              beginAtZero: false
+              beginAtZero: true
             },
             gridLines: {
               display: true
@@ -41,18 +40,17 @@ export default {
         },
         title: {
           display: true,
-          text: 'CUSTOS DOS DEPARTAMENTOS'
+          text: 'COLABORADORES POR CARGO'
         }
       }
     }
   },
   mounted () {
     this.renderChart(this.chartData, this.options)
-  },
-  watch: {
-    chartData (atual, anterior) {
-      this.renderChart(this.chartData, this.options)
-    }
   }
 }
 </script>
+
+<style>
+
+</style>

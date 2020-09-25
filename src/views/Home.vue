@@ -4,15 +4,18 @@
       <q-chip outline square color="secondary" icon="fa fa-users" size="19px">
         <div class="text-bold q-pl-sm">{{`${countColabs()}`}} COLABORADORES</div>
       </q-chip>
-      <q-chip outline square color="green-14" size="19px">
-        <div class="text-bold ellipsis">{{`${formatCurrency(countCost())}`}} DE CUSTO OPERACIONAL</div>
+      <q-chip outline square color="green-14" icon="fas fa-money-bill-wave" size="19px">
+        <div class="text-bold ellipsis q-pl-sm">{{`${formatCurrency(countCost())}`}} DE CUSTO OPERACIONAL</div>
       </q-chip>
     </div>
-    <div class="row items-center q-pb-md">
-      <div v-if="load" class="col-sm-7 col-md-7 col-xs-12">
+    <div class="row items-center q-pb-md q-col-gutter-sm">
+      <div v-if="load" class="col-sm-4 col-md-4 col-xs-12">
         <bar-chart class="chart-container" :chartData="datacollection" :bind="true"/>
       </div>
-      <div class="column col-sm-5 col-md-5 col-xs-11">
+        <div v-if="load" class="col-sm-4 col-md-4 col-xs-12">
+        <horizontal-bar class="chart-container" :chartData="dataHorizontal" :bind="true"/>
+      </div>
+      <div class="column col-sm-4 col-md-4 col-xs-12">
         <div class="q-pb-sm">
           <q-btn-dropdown
             split
@@ -26,8 +29,8 @@
             <q-list
               v-for="departamento in getTodosDepartamentos"
               :key="departamento.idDepartamento"
-            >
-              <q-item clickable v-close-popup @click="changePieData(departamento)">
+            dense>
+              <q-item clickable v-close-popup @click="changePieData(departamento)" active-class="my-menu-link">
                 <q-item-section>
                   <q-item-label>{{departamento.nomeDepartamento.toUpperCase()}}</q-item-label>
                 </q-item-section>
@@ -157,10 +160,11 @@ import filter from '../mixins/filter.js'
 import format from '../mixins/format.js'
 import barChart from '../components/bar-chart.vue'
 import pieChart from '../components/pie-chart.vue'
+import horizontalBar from '../components/horizontal-bar.vue'
 import { mapGetters, mapActions, mapMutations, mapState } from 'vuex'
 export default {
   mixins: [filter, format],
-  components: { departamentoForm, cargoForm, barChart, pieChart },
+  components: { departamentoForm, cargoForm, barChart, pieChart, horizontalBar },
   name: 'Home',
   data () {
     return {
@@ -169,12 +173,27 @@ export default {
         labels: [],
         datasets: [
           {
-            label: 'Departamento',
+            label: 'DEPARTAMENTO',
             pointBackgroundColor: 'white',
-            backgroundColor: 'rgba(0, 150, 136, 0.5)',
-            borderColor: 'rgba(53, 150, 150,1)',
-            hoverBackgroundColor: 'rgba(0, 180, 180, 0.4)',
-            hoverBorderColor: 'rgba(0, 150, 136, 0.5)',
+            backgroundColor: 'rgba(0, 200, 83, 0.5)',
+            borderColor: 'rgba(0, 200, 90,1)',
+            hoverBackgroundColor: 'rgba(0, 200, 100, 0.4)',
+            hoverBorderColor: 'rgba(0, 200, 83, 0.5)',
+            borderWidth: 1,
+            data: []
+          }
+        ]
+      },
+      dataHorizontal: {
+        labels: [],
+        datasets: [
+          {
+            label: 'CARGO',
+            pointBackgroundColor: 'white',
+            backgroundColor: 'rgba(102, 204, 255, 0.5)',
+            borderColor: 'rgba(102, 204, 255,1)',
+            hoverBackgroundColor: 'rgba(102, 204, 255, 0.4)',
+            hoverBorderColor: 'rgba(102, 204, 255, 0.5)',
             borderWidth: 1,
             data: []
           }
@@ -250,9 +269,8 @@ export default {
     },
     refreshPie () {
       this.dashCargo()
-      this.titlePie = 'PROPORÇÃO DE COLABORADORES'
-      this.pieData.labels = this.$store.state.cargo.cargoLabels
-      this.pieData.datasets[0].data = this.$store.state.cargo.cargoData
+      this.dataHorizontal.labels = this.$store.state.cargo.cargoLabels
+      this.dataHorizontal.datasets[0].data = this.$store.state.cargo.cargoData
     },
     countColabs () {
       const reducer = (soma, valorAtual) => soma + valorAtual.ncolaboradores
@@ -265,16 +283,17 @@ export default {
       return count
     }
   },
-  created () {
+  async created () {
     this.novosColabs()
-    this.dashCargo()
-    this.pieData.labels = this.$store.state.cargo.cargoLabels
-    this.pieData.datasets[0].data = this.$store.state.cargo.cargoData
+    await this.dashCargo()
     this.datacollection.labels = this.$store.state.depart.labels
     this.datacollection.datasets[0].data = this.$store.state.depart.data
+    this.dataHorizontal.labels = this.$store.state.cargo.cargoLabels
+    this.dataHorizontal.datasets[0].data = this.$store.state.cargo.cargoData
   },
-  mounted () {
-    this.dashDepartamentos()
+  async mounted () {
+    await this.dashDepartamentos()
+    this.changePieData(this.getDashDepartamentos[0])
   }
 }
 </script>
@@ -325,5 +344,8 @@ export default {
 }
 #doughnut-chart {
   height: 360px !important;
+}
+.my-menu-link {
+  color: #26A69A;
 }
 </style>
