@@ -13,7 +13,7 @@ export default {
     idColaborador: null,
     nomeColaborador: '',
     cpfCnpj: '',
-    salario: null,
+    salario: 0,
     dataContratacao: '',
     telefone: '',
     email: '',

@@ -15,7 +15,7 @@ export default {
     state.colaborador.idColaborador = null
     state.colaborador.nomeColaborador = ''
     state.colaborador.cpfCnpj = ''
-    state.colaborador.salario = null
+    state.colaborador.salario = 0
     state.colaborador.dataContratacao = ''
     state.colaborador.telefone = ''
     state.colaborador.email = ''
