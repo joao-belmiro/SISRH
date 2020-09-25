@@ -19,11 +19,19 @@ const converter = (colabs) => {
     }
   })
 }
+
+const atualizaDash = ({ dispatch }, routeName) => {
+  if (routeName === 'home' || routeName === 'visualizar') {
+    dispatch('depart/dashDepartamentos', true, { root: true })
+  }
+}
+
 export default {
-  async salvarColab ({ state, commit }, colab) {
+  async salvarColab ({ dispatch, commit }, colab) {
     await colaborador.salvar(colab).then(response => {
       if (response.status === 201) {
         commit('limparColaborador', true)
+        atualizaDash({ dispatch }, router.currentRoute.name)
       }
     })
   },
@@ -53,12 +61,15 @@ export default {
       commit('setDashColaboradores', colabs)
     })
   },
-  async deletarColaborador ({ commit }, colab) {
+  async deletarColaborador ({ dispatch, commit }, colab) {
     await colaborador.deletar(colab.idColaborador).then(response => {
       if (response.status === 204) {
         if (router.currentRoute.name === 'listarColaborador') commit('removerColaborador', colab.idColaborador)
         if (router.currentRoute.name === 'visualizar') commit('removerColaboradorDept', colab.idColaborador)
-        if (router.currentRoute.name === 'home') commit('removerDashColaborador', colab.idColaborador)
+        if (router.currentRoute.name === 'home') {
+          commit('removerDashColaborador', colab.idColaborador)
+          atualizaDash({ dispatch }, router.currentRoute.name)
+        }
       }
     })
   },
