@@ -65,7 +65,8 @@ import {
   QSpinnerAudio,
   QSpinner,
   QImg,
-  QCheckbox
+  QCheckbox,
+  QField
 } from 'quasar'
 
 Vue.use(Quasar, {
@@ -73,6 +74,7 @@ Vue.use(Quasar, {
     Dark
   },
   components: {
+    QField,
     QBanner,
     QLayout,
     QHeader,
